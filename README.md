@@ -1,4 +1,4 @@
 # IBAJava_1
-Дмитрий Протасовицкий
+Для ClaendarIBA пользователь admin, пароль admin
 
 
