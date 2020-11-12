@@ -1,0 +1,87 @@
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col-sm-12" >
+            <h3>Группы</h3>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-sm">
+            <button class="btn-add" title="Добавить" (click)="onAdd()" > <span class="oi oi-plus"></span> Добавить </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <table class="table table-active">
+                <thead class="thead-light">
+                <tr>
+
+                    <th>№</th>
+                    <th>Наименование группы</th>
+                    <th>Форма образования</th>
+                    <th>Учебный план</th>
+                    <th>Подгруппы</th>
+                    <th>Цвет</th>
+                    <th></th>
+                    <!--<th></th>
+                    <th></th>-->
+
+                </tr>
+                </thead>
+
+
+                <tbody>
+                <ng-template ngFor let-group [ngForOf]="groups" let-i="index"
+                >
+                    <tr>
+
+                        <td scope="row"> {{i+1}}</td>
+                        <td>{{group.groupName}} </td>
+                        <td>{{group.typeOfEducation.short_value}} </td>
+                        <td>{{group.descriptionOfPlanDto.description}} </td>
+                        <td>{{group.numberOfSubgroup}}</td>
+                        <td >
+                            <div class="circle" [ngStyle]="{'background-color': group.color}"></div>
+                        </td>
+                        <td class="td-p-4">
+                            <button class="btn-edit-yellow" title="Добавить количество человек в группу" [routerLink]="['students', group.id]" >
+                                <span class="oi oi-people"> </span>
+                            </button>
+                            <button class="btn-edit" title="Редактировать" [routerLink]="['edit', group.id]" >
+                                <span class="oi oi-pencil"></span>
+                            </button>
+                            <button class="btn-delete" title="Удалить" (click)="onDelete(group)">
+                                <span class="oi oi-trash"></span>
+                            </button>
+
+                        </td>
+                        <!--<td class="td-p-4">
+
+                            <button class="btn-edit" title="Редактировать" [routerLink]="['edit', group.id]" >
+                                <span class="oi oi-pencil"></span>
+                            </button>
+
+                        </td>
+                        <td class="td-p-4">
+
+                            <button class="btn-delete" title="Удалить" (click)="onDelete(group)">
+                                <span class="oi oi-trash"></span>
+                            </button>
+                        </td>-->
+                    </tr>
+                </ng-template>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+

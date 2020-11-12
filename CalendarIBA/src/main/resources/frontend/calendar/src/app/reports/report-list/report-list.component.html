@@ -1,0 +1,67 @@
+<br>
+<div class="container offset-1">
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Расписание:</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngIf="isAdminOrManagerOrView">
+                    <a [routerLink]="['/reports/', 'timetable']" >Расписание общее</a>
+                </li>
+                <li class="list-group-item">
+                    <a [routerLink]="['/reports/', 'timetable-group']">Расписание по группе</a>
+                </li>
+                <li class="list-group-item" *ngIf="isAdminOrManagerOrViewOrUser">
+                    <a [routerLink]="['/reports/', 'timetable-teacher']">Расписание по преподавателю</a>
+                </li>
+                <!--<li class="list-group-item">
+                    <a [routerLink]="['/reports/', 'timetable-classroom']">Расписание по аудитории</a>
+                </li>-->
+            </ul>
+        </div>
+
+        <div class="col-md-8" *ngIf="isAdminOrManagerOrViewOrUser">
+            <h5>Отчеты:</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngIf="isAdminOrManagerOrView">
+                    <a [routerLink]="['/reports/', 'report02015']">Ведомость выполненной нагрузки ППС (форма Ф02-015) общая</a>
+                </li>
+                <li class="list-group-item" *ngIf="isAdminOrManagerOrViewOrUser">
+                    <a [routerLink]="['/reports/', 'report-teacher02015']">Ведомость выполненной нагрузки ППС (форма Ф02-015) по преподавателю</a>
+                </li>
+                <li class="list-group-item" *ngIf="isAdminOrManagerOrView">
+                    <a [routerLink]="['/reports/', 'report-group02015']">Ведомость выполненной нагрузки ППС (форма Ф02-015) по группе</a>
+                </li>
+                <!--<li class="list-group-item">
+                    <a [routerLink]="['/reports/', 'report-typeOfEmployment']">Ведомость выполненной нагрузки ППС (форма Ф02-015) по найму</a>
+                </li>-->
+                <li class="list-group-item" *ngIf="isAdminOrManagerOrView">
+                    <a [routerLink]="['/reports/', 'report-groupClasses']">Сводная ведомость учета проведения занятий</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row" *ngIf="isAdminOrManager">
+        <div class="col-md-4">
+            <h5>Отчеты по справочникам:</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a [routerLink]="['/reports/', 'teachers']">Список преподавателей</a>
+                </li>
+                <li class="list-group-item">
+                    <a [routerLink]="['/reports/', 'disciplines']">Список предметов</a>
+                </li>
+                <li class="list-group-item">
+                    <a [routerLink]="['/reports/', 'groups']">Список групп</a>
+                </li>
+                <!--<li class="list-group-item">
+                    <a [routerLink]="['/reports/', 'employees']">Отчет по сотрудникам</a>
+                </li>-->
+            </ul>
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,87 @@
+<br>
+<div class="container-fluid">
+    <div class="form-row">
+        <div class="col-md-2 form-group" *ngIf="isPeriod">
+                <input title="startDate" type="date" class="form-control" [(ngModel)]="startDate" />
+        </div>
+        <div class="col-md-2 form-group" *ngIf="isPeriod">
+            <input title="endDate" type="date" class="form-control" [(ngModel)]="endDate" />
+        </div>
+
+        <div class="col-md-2" *ngIf="isGroup">
+            <ng-select [(ngModel)]="group"
+                       [items]="groups"
+                       bindLabel="groupName"
+                       bindValue="id"
+                       [multiple]="false"
+                       placeholder="Выберите группу"
+                       clearAllText="Clear"
+            >
+            </ng-select>
+        </div>
+
+        <div class="col-md-2" *ngIf="isTeacher">
+            <ng-select [(ngModel)]="teacher"
+                       [items]="teachers"
+                       bindLabel="lastName"
+                       bindValue="id"
+                       [multiple]="false"
+                       placeholder="Выберите преподавателя"
+                       clearAllText="Clear"
+            >
+            </ng-select>
+        </div>
+
+        <div class="col-md-2" *ngIf="isClassroom">
+            <ng-select [(ngModel)]="classroom"
+                       [items]="classrooms"
+                       bindLabel="number"
+                       bindValue="id"
+                       [multiple]="false"
+                       placeholder="Выберите аудиторию"
+                       clearAllText="Clear"
+            >
+            </ng-select>
+        </div>
+
+        <!--<div class="col-md-2">
+            <ng-select [(ngModel)]="format"
+                       [items]="formats"
+                       bindLabel="value"
+                       bindValue="value"
+                       [multiple]="false"
+                       placeholder="Выберите формат отчета"
+                       clearAllText="Clear"
+            >
+            </ng-select>
+        </div>-->
+        <div class="col-md">
+            <button class="btn btn-primary" (click)="showPDF()">Показать</button>
+        </div>
+        <!--<div class="col-md-1">
+            <button class="btn btn-primary" (click)="download()">Скачать</button>
+        </div>-->
+
+        <div class="col-md-3">
+                Скачать:
+            <button class="btn btn-outline-primary" title="Скачать PDF" (click)="download('PDF')"><img src="./assets/pdf-icon3.png"></button>
+
+            <button class="btn btn-outline-primary" title="Скачать Word" (click)="download('DOCX')"><span><img src="./assets/word-icon.png"></span></button>
+
+            <button class="btn btn-outline-primary" title="Скачать Excel" (click)="download('XLSX')"><span><img src="./assets/excel-icon.png"></span></button>
+        </div>
+
+        <div class="col-md" style="text-align: right">
+            <button class="btn btn-primary"  (click)="gotoReportList()">Назад</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md" style="text-align:center">
+            <iframe id="viewer" style="width: 100%; height: 90vh"></iframe>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>

@@ -1,0 +1,83 @@
+<ng-sidebar-container
+        (onBackdropClicked)="_onBackdropClicked()">
+
+    <!-- A sidebar -->
+
+    <ng-sidebar
+            [(opened)]="_opened"
+            [mode]="_MODES[_modeNum]"
+            [keyClose]="_keyClose"
+            [position]="_POSITIONS[_positionNum]"
+            [dock]="_dock"
+            [dockedSize]="'50px'"
+            [autoCollapseHeight]="_autoCollapseHeight"
+            [autoCollapseWidth]="_autoCollapseWidth"
+            [closeOnClickOutside]="_closeOnClickOutside"
+            [closeOnClickBackdrop]="_closeOnClickBackdrop"
+            [showBackdrop]="_showBackdrop"
+            [animate]="_animate"
+            [trapFocus]="_trapFocus"
+            [autoFocus]="_autoFocus"
+            [sidebarClass]="'navbar-dark2'"
+            [ariaLabel]="'My sidebar'"
+    >
+<div class="container-fluid">
+    <p>Настройки создания занятий</p>
+
+
+            <div class="col-md">
+                <ng-select
+                        [items]="groups"
+                        bindLabel="groupName"
+                        bindValue="id"
+                        [multiple]="false"
+                        placeholder="Выберите группу"
+                        clearAllText="Clear"
+                        [(ngModel)]="group"
+                >
+                </ng-select>
+            </div>
+    <p>Выберите предмет (если нужно)</p>
+            <div class="col-md">
+                <ng-select [(ngModel)]="discipline"
+                           [items]="disciplines"
+                           bindLabel="shortDisciplineName"
+                           bindValue="id"
+                           [multiple]="false"
+                           placeholder="Выберите предмет"
+                           clearAllText="Clear"
+                >
+                </ng-select>
+            </div>
+        <br>
+        <div class="col-md" style="text-align: center">
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()" >Создать</button>
+        </div>
+
+
+</div>
+
+    </ng-sidebar>
+
+    <!-- Page content -->
+
+    <div ng-sidebar-content >
+        <!-- Header -->
+        <header class="menu">
+            <button (click)="_toggleOpened()" class="btn-edit-primary"  title="Скрыть меню"><span class="oi oi-cog"></span></button>
+             <span>Настройки</span>
+        </header>
+        <section class="demo-contents">
+
+            <!-- Body -->
+            <app-timetable [events] = "externalEvents"
+                           (requestNewEvent)="onRequestNewEvent($event)"
+                           (requestUpdateEvent)="onRequestUpdateEvent($event)"
+                           (clickButtonOk)="onClickButtonOk($event)"
+                           (eventUpdated)="onEventUpdated($event)"></app-timetable>
+
+
+        </section>
+    </div>
+
+</ng-sidebar-container>

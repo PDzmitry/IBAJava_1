@@ -1,0 +1,1415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="form_2_015" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4779d3b2-c64b-4553-b5b4-b602b00c5eb0">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset1" uuid="0c9e962a-c3dc-423c-8d85-c698ca0152a5">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="teacher" class="java.lang.String"/>
+		<field name="type_employee" class="java.lang.String"/>
+		<field name="discipline" class="java.lang.String"/>
+		<field name="laboratory" class="java.lang.Double"/>
+		<field name="lecture" class="java.lang.Double"/>
+		<field name="group" class="java.lang.Long"/>
+		<field name="education" class="java.lang.String"/>
+		<field name="course" class="java.lang.String"/>
+		<field name="webinar" class="java.lang.Double"/>
+		<field name="practice" class="java.lang.Double"/>
+		<field name="roundtable" class="java.lang.Double"/>
+		<field name="businessgames" class="java.lang.Double"/>
+		<field name="exam" class="java.lang.Double"/>
+		<field name="test" class="java.lang.Double"/>
+		<field name="consultation" class="java.lang.Double"/>
+		<field name="peerreview" class="java.lang.Double"/>
+		<field name="thesis" class="java.lang.Double"/>
+		<field name="other" class="java.lang.Double"/>
+		<field name="sec" class="java.lang.Double"/>
+		<field name="se" class="java.lang.Double"/>
+		<sortField name="type_employee" order="Descending"/>
+		<sortField name="teacher"/>
+		<variable name="lecture_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{lecture}+$F{webinar}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="laboratory_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{laboratory}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="teacher_sum_work" class="java.lang.Double">
+			<variableExpression><![CDATA[$F{laboratory}+$F{lecture}+$F{webinar}+$F{practice}+$F{roundtable}+$F{businessgames}+$F{exam}+$F{test}+$F{consultation}+$F{peerreview}+$F{thesis}+$F{other}+$F{sec}+$F{se}]]></variableExpression>
+			<initialValueExpression><![CDATA[0.0]]></initialValueExpression>
+		</variable>
+		<variable name="sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{teacher_sum_work}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="lecture_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{lecture_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="laboratory_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{laboratory_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="sum_all" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="group_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{group}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="group_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{group_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="practice_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{practice}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="practice_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{practice_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="roundtable_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{roundtable}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="roundtable_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{roundtable_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="businessgames_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{businessgames}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="businessgames_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{businessgames_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="test_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{test}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="test_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{test_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="exam_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{exam}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="exam_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{exam_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="se_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{se}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="se_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{se_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="thesis_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{thesis}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="thesis_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{thesis_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="consultation_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{consultation}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="consultation_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{consultation_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="peerreview_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{peerreview}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="peerreview_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{peerreview_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="sec_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{sec}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="sec_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{sec_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="other_sum_type_employee" class="java.lang.Double" resetType="Group" resetGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{other}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="other_sum" class="java.lang.Double" incrementType="Group" incrementGroup="typeEmployeeGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{other_sum_type_employee}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<group name="typeEmployeeGroup">
+			<groupExpression><![CDATA[$F{type_employee}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="d1" class="java.lang.String"/>
+	<parameter name="d2" class="java.lang.String"/>
+	<parameter name="DS1" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="rector" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="173">
+			<staticText>
+				<reportElement x="279" y="153" width="25" height="20" uuid="bf48732f-b3bf-4ff7-8c5b-c874b7c157df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="11"/>
+				</textElement>
+				<text><![CDATA[с]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="307" y="152" width="110" height="20" uuid="a7a21b7d-3f37-469b-9eab-79f2212f773b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{d1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="417" y="152" width="30" height="20" uuid="2d1777e3-ee6a-40c8-bb14-2fc46791ed7e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="11"/>
+				</textElement>
+				<text><![CDATA[по]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="152" width="110" height="20" uuid="6a340360-d2cf-420b-832c-4bc355868e07"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{d2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="106" width="281" height="19" uuid="9ee5645d-ff40-4a9c-856d-278e899ee523"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ведомость выполненной нагрузки ППС ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="751" y="0" width="49" height="14" uuid="7472223e-6b4d-4760-a300-a90130a4565e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ф02-015]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="281" y="131" width="279" height="17" uuid="c2bfcaf8-7aed-4f98-8dbb-d940217aaf19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="11"/>
+				</textElement>
+				<text><![CDATA[кафедры ИТ и бизнес-администрирования]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="661" y="25" width="100" height="20" uuid="ed509ebf-8df0-48f4-8707-59175877ec49"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[УТВЕРЖДАЮ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="661" y="46" width="48" height="18" uuid="49da7538-2fab-4ac2-bddf-7085ae6fc587"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="11"/>
+				</textElement>
+				<text><![CDATA[Ректор]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="711" y="62" width="83" height="18" uuid="90995ee8-3082-42bc-acca-3401920efebf"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rector}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="664" y="87" width="130" height="18" uuid="76f48aba-632d-41b3-8918-f346e62ec749"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="11"/>
+				</textElement>
+				<text><![CDATA["_____"________________]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="294" splitType="Stretch">
+			<componentElement>
+				<reportElement x="33" y="4" width="767" height="290" uuid="3aa5ceed-4955-4f9e-8d3c-2df467563387">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset1" uuid="f6011874-ad7e-4724-b07c-dbe4a3cf7213">
+						<datasetParameter name="REPORT_DATA_SOURCE">
+							<datasetParameterExpression><![CDATA[$P{DS1}]]></datasetParameterExpression>
+						</datasetParameter>
+					</datasetRun>
+					<jr:column width="30" uuid="6a9dc484-2326-4029-aa9a-ac3cbccae198">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:tableFooter>
+						<jr:groupHeader groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:groupFooter groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							</jr:cell>
+						</jr:groupFooter>
+						<jr:columnHeader style="Table_CH" height="180" rowSpan="2">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="180" uuid="f0b766c1-a76e-42a6-9281-a31441e5d7c6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ № п/п]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="20" printWhenGroupChanges="typeEmployeeGroup" uuid="f262a501-4278-4445-90d2-ed11b7c30aa2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{typeEmployeeGroup_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="160" uuid="36eb61e7-4888-4fdb-bdda-e0202c39bd8d">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="160" height="20" uuid="d772c306-99eb-41bb-ad52-4b126710d1e0"/>
+								<box rightPadding="2"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Итого]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:groupHeader groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textField>
+									<reportElement isPrintRepeatedValues="false" x="0" y="0" width="160" height="20" uuid="aa2fed61-51d8-473b-8a99-d0497aa92b21"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{type_employee}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:groupFooter groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="160" height="20" uuid="b73fe448-a740-4722-a1de-cdd2941833f6"/>
+									<box leftPadding="0" rightPadding="2"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Всего]]></text>
+								</staticText>
+							</jr:cell>
+						</jr:groupFooter>
+						<jr:columnHeader style="Table_CH" height="180" rowSpan="2">
+							<staticText>
+								<reportElement x="0" y="0" width="160" height="180" uuid="ac71835e-8feb-4737-9507-0536d63022ac"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Название курса/ раздела/ предмета]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="160" height="20" uuid="aaefaf13-9b42-4b7c-8592-4163df67c816"/>
+								<box padding="3"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{discipline}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="110" uuid="e7224b21-4001-4d14-b7fa-954f18b995a6">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:tableFooter style="Table_TH" height="20" rowSpan="1"/>
+						<jr:groupHeader groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:groupFooter groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1"/>
+						</jr:groupFooter>
+						<jr:columnHeader style="Table_CH" height="180" rowSpan="2">
+							<staticText>
+								<reportElement x="0" y="0" width="110" height="180" uuid="31cd4051-63fd-4521-bd99-3b57d7f4d11e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Преподаватель]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="110" height="20" uuid="ed427788-55fa-4b06-9334-d85638552420"/>
+								<box padding="3"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{teacher}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="25" uuid="40734d4e-8458-40f5-a167-eeb0efc364e0">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:tableFooter style="Table_TH" height="20" rowSpan="1"/>
+						<jr:groupHeader groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:groupFooter groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1"/>
+						</jr:groupFooter>
+						<jr:columnHeader style="Table_CH" height="180" rowSpan="2">
+							<staticText>
+								<reportElement x="0" y="0" width="25" height="180" uuid="cb3a614e-1554-411c-99a2-97846fadae64"/>
+								<box padding="2"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+									<font fontName="DejaVu Sans" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Форма образования]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField>
+								<reportElement x="0" y="0" width="25" height="20" uuid="0e0a3ec3-f582-48e0-a284-4257c441968c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{education}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="25" uuid="91c802f3-fdad-4f96-9b94-6ce509cc5c74">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:tableFooter style="Table_TH" height="20" rowSpan="1"/>
+						<jr:groupHeader groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:groupFooter groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1"/>
+						</jr:groupFooter>
+						<jr:columnHeader style="Table_CH" height="180" rowSpan="2">
+							<staticText>
+								<reportElement x="0" y="0" width="25" height="180" uuid="88b51f81-82e6-4312-b892-f5471dd0933c"/>
+								<box padding="2"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+									<font fontName="DejaVu Sans" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Форма обучения]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="25" height="20" uuid="8a5afb99-12d4-4ba6-b3ef-56c07b77b803"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{course}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="25" uuid="f12ef003-ecae-4bfc-b06e-da43adacc572">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+						<jr:tableFooter style="Table_TH" height="20" rowSpan="1"/>
+						<jr:groupHeader groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:groupFooter groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1"/>
+						</jr:groupFooter>
+						<jr:columnHeader style="Table_CH" height="180" rowSpan="2">
+							<staticText>
+								<reportElement x="0" y="0" width="25" height="180" uuid="45509200-fcd2-4c09-802a-b3d60558b707"/>
+								<box padding="2"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+									<font fontName="DejaVu Sans" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Кол-во слушателей]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="25" uuid="58d54d3a-0e12-43bc-bc92-153b3280a9b3">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+						<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="25" height="20" uuid="a3f7d6b8-72d4-475c-b970-2594dce92ef3">
+									<printWhenExpression><![CDATA[!($V{group_sum}==0)]]></printWhenExpression>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans" isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{group_sum}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:groupHeader groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:groupFooter groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="e604828d-3c67-49a5-b32d-86c8d5fbe284">
+										<printWhenExpression><![CDATA[!($V{group_sum_type_employee}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{group_sum_type_employee}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupFooter>
+						<jr:columnHeader style="Table_CH" height="180" rowSpan="2">
+							<staticText>
+								<reportElement x="0" y="0" width="25" height="180" uuid="06d32ccd-dab1-43cb-9bee-ae78a13a6699"/>
+								<box padding="2"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+									<font fontName="DejaVu Sans" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Кол-во групп]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="25" height="20" uuid="5d278421-1ef6-4d0b-b0e3-2e5e4a70c61d">
+									<printWhenExpression><![CDATA[!($F{group}==0)]]></printWhenExpression>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{group}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:columnGroup width="335" uuid="080988c7-afc9-4cbb-b312-fb5f69d78bac">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [13]"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="335" height="30" uuid="7f9bfae5-2cf4-46b5-970f-ae5b05fe582f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans" isBold="true"/>
+								</textElement>
+								<text><![CDATA[кол-во часов по видам занятий]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:column width="25" uuid="f654b25e-a75a-40c7-a99f-100851fd7743">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="fdd0e24e-edf2-4c9f-8666-40727359a954">
+										<printWhenExpression><![CDATA[!($V{lecture_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{lecture_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="25" height="20" uuid="d3572375-247e-4069-816d-ea0ec0fe2a0c">
+											<printWhenExpression><![CDATA[!($V{lecture_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{lecture_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="25" height="150" uuid="a20b1a54-f0f5-413d-9a18-5052131b8b9e"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[лекции]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="3e28bf10-a825-4953-88ff-7dcbdf6f7717">
+										<printWhenExpression><![CDATA[!(($F{lecture}+$F{webinar})==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{lecture}+$F{webinar}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="25" uuid="dd96ae8f-08bc-4874-b7ae-6557cb29fdf6">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="43bebf01-2b1c-4f09-a49f-ecf7f4b3b19c">
+										<printWhenExpression><![CDATA[!($V{practice_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{practice_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="25" height="20" uuid="bf05a893-567a-48a6-aeea-f3c7a800e0a1">
+											<printWhenExpression><![CDATA[!($V{practice_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{practice_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="25" height="150" uuid="99ff64e6-b899-4929-9f5b-9ba578cd2653"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[практические занятия]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="f4bd86f9-9089-4855-8e61-ebe59ce148e1">
+										<printWhenExpression><![CDATA[!($F{practice}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{practice}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="25" uuid="7ab94562-d50c-45cd-a2c3-a12a4b924fb1">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="4d3fb6bf-1b6d-4472-af65-eb5211730947">
+										<printWhenExpression><![CDATA[!($V{laboratory_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{laboratory_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="25" height="20" uuid="2835fcda-74a0-4c1c-8744-5635109bf61c">
+											<printWhenExpression><![CDATA[!($V{laboratory_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{laboratory_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="25" height="150" uuid="c708c457-4534-4f14-bfba-f772b0f5721b"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[лабораторные занятия]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="32e91d39-17c5-4493-94c3-5a25da82a414">
+										<printWhenExpression><![CDATA[!($F{laboratory}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{laboratory}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="25" uuid="9f855ae4-9754-455c-9efa-5f01a71d3cb1">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column11"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="cdf0f25a-73d2-4051-b76d-d094d26d16f6">
+										<printWhenExpression><![CDATA[!($V{roundtable_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{roundtable_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="25" height="20" uuid="cdeff86f-cdac-49ae-9589-b12190d1e33f">
+											<printWhenExpression><![CDATA[!($V{roundtable_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{roundtable_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="25" height="150" uuid="14a7c543-1257-4993-a2b5-49bdb2091bec"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[круглые столы]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="8b920074-36bd-4469-b30a-ce485bf0a771">
+										<printWhenExpression><![CDATA[!($F{roundtable}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{roundtable}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="25" uuid="6be037d7-01c1-43fa-8ffe-9420eaf69459">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column12"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="23cd64d3-d00b-4c97-bb53-6f63490d995d">
+										<printWhenExpression><![CDATA[!($V{businessgames_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{businessgames_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="25" height="20" uuid="7913a1c2-e274-4ef2-b23f-a20a68130e85">
+											<printWhenExpression><![CDATA[!($V{businessgames_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{businessgames_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="25" height="150" uuid="935b36d0-1442-4311-abc6-66043a09dc4c"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[деловые игры]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="7070ba94-874e-4e31-bc27-7601976f5555">
+										<printWhenExpression><![CDATA[!($F{businessgames}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{businessgames}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="25" uuid="482f0f93-276c-4084-be66-145f814a8ae7">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column13"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="7708bac3-e15e-48bc-842e-fdd9eeb13b09">
+										<printWhenExpression><![CDATA[!($V{test_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{test_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="25" height="20" uuid="720a99f9-90c0-486e-88e6-1fafdafaa138">
+											<printWhenExpression><![CDATA[!($V{test_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{test_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="25" height="150" uuid="0af8491b-af8f-4fbd-b4ec-8f0ee9abbb71"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[зачет]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="42d03a35-7e34-4ee7-8a6b-a128ac43bd3b">
+										<printWhenExpression><![CDATA[!($F{test}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{test}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="25" uuid="b06022ca-2025-41ec-9792-f699ed8448f5">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column14"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="a36df022-03d0-498f-8d5d-a67a093fe9b4">
+										<printWhenExpression><![CDATA[!($V{exam_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{exam_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="25" height="20" uuid="5c07ec2b-e9f0-468a-a6c3-04119d7b4e24">
+											<printWhenExpression><![CDATA[!($V{exam_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{exam_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="25" height="150" uuid="f611dbbc-6685-4b9e-990b-4ab3ce6d3f88"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[экзамен]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="e7d9b0ef-8207-452e-b50a-cc51088ab786">
+										<printWhenExpression><![CDATA[!($F{exam}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{exam}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="30" uuid="f342b7b1-3dbc-4d39-90c9-735ff70697ab">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column15"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="30" height="20" uuid="2f2c80e3-03a7-4ad5-8d68-39564d70dc77">
+										<printWhenExpression><![CDATA[!($V{se_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{se_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="30" height="20" uuid="d4c043f3-5263-4c8e-9f72-2ba8c20cf14a">
+											<printWhenExpression><![CDATA[!($V{se_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{se_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="30" height="150" uuid="7c97276e-48b8-4afc-a22b-a257be77770b"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[государственный экзамен]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<textField>
+									<reportElement x="0" y="0" width="30" height="20" uuid="60134306-50df-47ef-a360-25d1d8d78916">
+										<printWhenExpression><![CDATA[!($F{se}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{se}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="30" uuid="936e987a-f5d2-4e03-803e-0d2899b01f78">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column16"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="30" height="20" uuid="8b7080f0-7191-4bd9-ae8a-2e09dc51501b">
+										<printWhenExpression><![CDATA[!($V{thesis_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{thesis_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="30" height="20" uuid="9002da33-944c-49fd-b667-ddd586932152">
+											<printWhenExpression><![CDATA[!($V{thesis_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{thesis_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="30" height="150" uuid="b70d9e6b-c589-4770-a8b8-187e9c0f6972"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[руководство дипломной работой]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<textField>
+									<reportElement x="0" y="0" width="30" height="20" uuid="1a3dfac2-1159-42a7-a0b2-5b5de70e6a9b">
+										<printWhenExpression><![CDATA[!($F{thesis}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{thesis}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="25" uuid="2f8d5fb6-5bcd-47e8-8afd-6af06e5990da">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column17"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="ce42acea-2e1a-4be8-881d-66c0d7d61697">
+										<printWhenExpression><![CDATA[!($V{peerreview_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{peerreview_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="25" height="20" uuid="a274c3d4-b41a-4773-a5e7-857725fbed29">
+											<printWhenExpression><![CDATA[!($V{peerreview_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{peerreview_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="25" height="150" uuid="e9c3ced8-b3cf-48fe-ad69-f14def5f7c5c"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[рецензирование ДР]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="733ff74b-f4cd-4f87-9b0d-001cd0dcbc04">
+										<printWhenExpression><![CDATA[!($F{peerreview}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{peerreview}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="25" uuid="33ceb35d-0265-4669-a846-b2009277da10">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column18"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="d9c84724-6013-40ef-aaba-5e0441789f4e">
+										<printWhenExpression><![CDATA[!($V{consultation_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{consultation_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="25" height="20" uuid="ef2f48e7-63f2-4953-8c45-d074c8cfba68">
+											<printWhenExpression><![CDATA[!($V{consultation_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{consultation_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="25" height="150" uuid="61b5a758-d3ff-42f1-a66f-708b435acb6c"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[консультирование ДР]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="2812742d-f73d-4fed-b5ac-e837c36777c2">
+										<printWhenExpression><![CDATA[!($F{consultation}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{consultation}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="25" uuid="a3c8e37c-dece-44d7-a3fd-fd530893daed">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column19"/>
+							<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="07de9957-d4a1-4ab1-b4a6-f8e59a8e1b2b">
+										<printWhenExpression><![CDATA[!($V{sec_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{sec_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="25" height="20" uuid="ab2f6401-06dd-4683-bba3-5f2bde99ec8f">
+											<printWhenExpression><![CDATA[!($V{sec_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{sec_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="25" height="150" uuid="09c9a8dc-591a-4e45-b2d4-84c0359dc0c3"/>
+									<box padding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[ГЭК]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="b0ad750d-aa35-40a9-a08f-50314401e318">
+										<printWhenExpression><![CDATA[!($F{sec}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{sec}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="25" uuid="47c70c01-19fe-4d42-919b-aec919b45d2e">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column20"/>
+							<jr:tableFooter style="Table_TH" height="20">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="353690da-a84d-4a74-8170-6d6f5cedc07a">
+										<printWhenExpression><![CDATA[!($V{other_sum}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{other_sum}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="typeEmployeeGroup">
+								<jr:cell style="Table_CH" height="20">
+									<textField>
+										<reportElement x="0" y="0" width="25" height="20" uuid="d40ba038-e5b5-4d6a-a890-977241c1b893">
+											<printWhenExpression><![CDATA[!($V{other_sum_type_employee}==0)]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{other_sum_type_employee}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="150">
+								<staticText>
+									<reportElement x="0" y="0" width="25" height="150" uuid="97f728b4-a6e5-4453-a941-695a80ed303a"/>
+									<box leftPadding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+										<font fontName="DejaVu Sans" isBold="true"/>
+									</textElement>
+									<text><![CDATA[другие учеб. работы]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<textField>
+									<reportElement x="0" y="0" width="25" height="20" uuid="093190ff-5e5c-4e77-bd10-ecbd8a1e6b39">
+										<printWhenExpression><![CDATA[!($F{other}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{other}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+					<jr:column width="35" uuid="b029f5b2-2dd5-47b3-9f97-d1de09d8a0d8">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column21"/>
+						<jr:tableFooter style="Table_TH" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="35" height="20" uuid="91f1a0d6-f624-418d-97a5-9ca898b17e01">
+									<printWhenExpression><![CDATA[!($V{sum_all}==0)]]></printWhenExpression>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans" isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{sum_all}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:groupHeader groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:groupFooter groupName="typeEmployeeGroup">
+							<jr:cell style="Table_CH" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="35" height="20" uuid="8e32f6a2-6851-4d92-83e7-2da7355be7ee">
+										<printWhenExpression><![CDATA[!($V{sum_type_employee}==0)]]></printWhenExpression>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="DejaVu Sans" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{sum_type_employee}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupFooter>
+						<jr:columnHeader style="Table_CH" height="180" rowSpan="2">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="35" height="180" uuid="44607eae-a738-4687-b520-074a30b9cb1d"/>
+								<box padding="2"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" rotation="Left">
+									<font fontName="DejaVu Sans" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Всего]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="35" height="20" uuid="19861e51-5832-4d62-947c-3f26853aecb5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{teacher_sum_work}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

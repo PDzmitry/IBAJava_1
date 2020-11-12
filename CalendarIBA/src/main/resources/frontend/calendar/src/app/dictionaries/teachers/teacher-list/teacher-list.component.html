@@ -1,0 +1,73 @@
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col-sm-12" >
+            <h3>Преподаватели</h3>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-sm">
+            <button class="btn-add" title="Добавить" (click)="onAdd()" > <span class="oi oi-plus"></span> Добавить </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <table class="table table-active">
+                <thead class="thead-light">
+                <tr>
+                    <th></th>
+                    <th>№</th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Цвет</th>
+                    <th></th>
+
+                </tr>
+                </thead>
+
+
+                <tbody>
+                <ng-template ngFor let-teacher [ngForOf]="teachers" let-i="index"
+                >
+                    <tr (click)="onSelect(teacher.id)">
+                        <td><img src="./assets/arrow.ico" alt="Развернуть" width="15" height="15"></td>
+                        <td scope="row"> {{i+1}}</td>
+
+                        <td>{{teacher.lastName}} </td>
+                        <td>{{teacher.firstName}}</td>
+                        <td>{{teacher.patronymic}}</td>
+                        <td >
+                            <div class="circle" [ngStyle]="{'background-color': teacher.color}"></div>
+                        </td>
+                        <td class="td-p-4" >
+                            <button class="btn-edit-yellow" title="Добавить/удалить дисциплины" [routerLink]="['disciplines', teacher.id]" >
+                                <span class="oi oi-book"></span>
+                            </button>
+
+                            <button class="btn-edit" title="Редактировать" [routerLink]="['edit', teacher.id]" >
+                                <span class="oi oi-pencil"></span>
+                            </button>
+
+                            <button class="btn-delete" title="Удалить" (click)="onDeleteTeacher(teacher)">
+                                <span class="oi oi-trash"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="table-dictionary">
+                        <td colspan="7" *ngIf="rowSelected==teacher.id" >
+                            <app-teacher-detail [idTeach]="teacher.id"></app-teacher-detail>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+

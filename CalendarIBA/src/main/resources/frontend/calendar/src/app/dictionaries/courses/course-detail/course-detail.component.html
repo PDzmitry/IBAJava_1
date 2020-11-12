@@ -1,0 +1,41 @@
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md">
+        <p><b>Учебный план:</b> {{id}} {{description}}</p>
+    </div>
+</div>
+<div class="form-row">
+
+        <label>Предметы в учебном плане:</label>
+</div>
+<div class="form-row">
+        <table class="table-active">
+            <thead class="thead">
+            <tr>
+
+                <th>№</th>
+                <th>Предмет</th>
+                <th>Преподаватель</th>
+                <th>Вид занятий</th>
+                <th>Количество часов</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <ng-template ngFor let-lessonPlan [ngForOf]="lessonPlans" let-i="index">
+                <tr>
+                    <td scope="row"> {{i+1}}</td>
+                    <td>{{lessonPlan.disciplineDto.shortDisciplineName}} </td>
+                    <td>{{lessonPlan.teacherDto.lastName}} {{lessonPlan.teacherDto.firstName| slice:0:1}}.
+                        {{lessonPlan.teacherDto.patronymic| slice:0:1}}.</td>
+                    <td>{{lessonPlan.typeOfWork.value}}</td>
+                    <td>{{lessonPlan.numberOfHours}}</td>
+                </tr>
+            </ng-template>
+
+            </tbody>
+        </table>
+</div>
+
+</div>

@@ -1,0 +1,70 @@
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col-sm-12" >
+            <h3>Учебные планы</h3>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row" *ngIf="isAdmin">
+        <div class="col-sm">
+            <button class="btn-add" title="Добавить" (click)="onAdd()" > <span class="oi oi-plus"></span> Добавить </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <table class="table table-active">
+                <thead class="thead-light">
+                <tr>
+                    <th></th>
+                    <th>№</th>
+                    <th>Наименование учебного плана</th>
+                    <th>Вид курса</th>
+                   <!-- <th>Количество часов в плане</th>-->
+                    <th></th>
+
+                </tr>
+                </thead>
+
+
+                <tbody>
+                <ng-template ngFor let-course [ngForOf]="courses" let-i="index"
+                >
+                    <tr (click)="onSelect(course.id)">
+                        <td><img src="./assets/arrow.ico" alt="Развернуть" width="15" height="15"></td>
+                        <td scope="row"> {{i+1}}</td>
+
+                        <td>{{course.description}} </td>
+                        <td>{{course.typeOfCourse.short_value}} </td>
+                        <!--<td></td>-->
+                        <td class="td-p-4">
+                            <button class="btn-edit-yellow" title="Добавить/удалить дисциплины в учебный план"
+                                    [routerLink]="['lessonplans', course.id]"  *ngIf="isAdminOrManager">
+                                <span class="oi oi-list"></span>
+                            </button>
+                            <button class="btn-edit" title="Редактировать" [routerLink]="['edit', course.id]" *ngIf="isAdmin">
+                                <span class="oi oi-pencil"></span>
+                            </button>
+                            <button class="btn-delete" title="Удалить" (click)="onDeleteCourse(course)" *ngIf="isAdmin">
+                                <span class="oi oi-trash"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="table-dictionary">
+                        <td colspan="6" *ngIf="rowSelected==course.id" >
+                            <app-course-detail [idCourse]="course.id"></app-course-detail>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+

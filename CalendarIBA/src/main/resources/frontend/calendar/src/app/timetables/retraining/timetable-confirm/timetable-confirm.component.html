@@ -1,0 +1,244 @@
+<div class="container">
+    <h4 *ngIf="isConfirm">Подтверждение занятий</h4>
+    <h4 *ngIf="!isConfirm">Отмена подтверждения занятий</h4>
+    <div>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsePeriod"
+                aria-expanded="false" aria-controls="collapsePeriod">
+            За период
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseGroup"
+                aria-expanded="false" aria-controls="collapseGroup">
+            По группе
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTeacher"
+                aria-expanded="false" aria-controls="collapseTeacher">
+            По преподавателю
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseClassroom"
+                aria-expanded="false" aria-controls="collapseClassroom">
+            По аудитории
+        </button>
+        <button class="btn btn-secondary" type="button" (click)="onClose()">
+            Закрыть
+        </button>
+    </div>
+    <!----------------------------------------------------------Период---------------------------------------------->
+    <div class="collapse" id="collapsePeriod">
+        <div class="card card-body">
+            <form [formGroup]="confirmForPeriodForm">
+                <div class="row">
+                    <div class="col-md-5 form-group">
+                        <input type="date" class="form-control" formControlName="startDate" />
+                    </div>
+                    <div class="col-md-5 form-group">
+                        <input type="date" class="form-control" formControlName="endDate" />
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <button type="submit" class="btn btn-info" *ngIf="isConfirm"
+                                (click)="loadTimetableToConfirmForPeriod()">Найти</button>
+                        <button type="submit" class="btn btn-info" *ngIf="!isConfirm"
+                                (click)="loadTimetableToCancelForPeriod()">Найти</button>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1"
+                                   (change)="checkUncheckAll()"/> <strong>Выбрать все/ Снять выбор</strong>
+                        </li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let item of timetables">
+                            <input type="checkbox" [(ngModel)]="item.isSelected" name="list_name"
+                                   (change)="isAllSelected()"/>
+                            {{item.title}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-success" *ngIf="isConfirm"
+                            (click)="confirmTimetables()">Подтвердить</button>
+                    <button type="submit" class="btn btn-warning" *ngIf="!isConfirm"
+                            (click)="cancelTimetables()">Отменить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------------------------------Группа---------------------------------------------->
+    <div class="collapse" id="collapseGroup">
+        <div class="card card-body">
+            <form [formGroup]="confirmForGroupForm">
+                <div class="row">
+                    <div class="col-md-7 form-group">
+                        <label>Группа: </label>
+                        <ng-select formControlName="group"
+                                   [items]="groups"
+                                   bindLabel="groupName"
+                                   bindValue="id"
+                                   [multiple]="false"
+                                   placeholder="Выберите группу"
+                                   clearAllText="Clear"
+                        >
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 form-group">
+                        <input type="date" class="form-control" formControlName="startDate" />
+                    </div>
+                    <div class="col-md-5 form-group">
+                        <input type="date" class="form-control" formControlName="endDate" />
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <button type="submit" class="btn btn-info" *ngIf="isConfirm"
+                                (click)="loadTimetableToConfirmForGroup()">Найти</button>
+                        <button type="submit" class="btn btn-info" *ngIf="!isConfirm"
+                                (click)="loadTimetableToCancelForGroup()">Найти</button>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1"
+                                   (change)="checkUncheckAll()"/> <strong>Выбрать все/ Снять выбор</strong>
+                        </li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let item of timetables">
+                            <input type="checkbox" [(ngModel)]="item.isSelected" name="list_name"
+                                   (change)="isAllSelected()"/>
+                            {{item.title}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-success" *ngIf="isConfirm"
+                            (click)="confirmTimetables()">Подтвердить</button>
+                    <button type="submit" class="btn btn-warning" *ngIf="!isConfirm"
+                            (click)="cancelTimetables()">Отменить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!------------------------------------------------------Преподаватель---------------------------------------------->
+    <div class="collapse" id="collapseTeacher">
+        <div class="card card-body">
+            <form [formGroup]="confirmForTeacherForm">
+                <div class="row">
+                    <div class="col-md-7 form-group">
+                        <label>Преподаватель: </label>
+                        <ng-select formControlName="teacher"
+                                   [items]="teachers"
+                                   bindLabel="lastName"
+                                   bindValue="id"
+                                   [multiple]="false"
+                                   placeholder="Выберите преподавателя"
+                                   clearAllText="Clear"
+                        >
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 form-group">
+                        <input type="date" class="form-control" formControlName="startDate" />
+                    </div>
+                    <div class="col-md-5 form-group">
+                        <input type="date" class="form-control" formControlName="endDate" />
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <button type="submit" class="btn btn-info" *ngIf="isConfirm"
+                                (click)="loadTimetableToConfirmForTeacher()">Найти</button>
+                        <button type="submit" class="btn btn-info" *ngIf="!isConfirm"
+                                (click)="loadTimetableToCancelForTeacher()">Найти</button>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1"
+                                   (change)="checkUncheckAll()"/> <strong>Выбрать все/ Снять выбор</strong>
+                        </li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let item of timetables">
+                            <input type="checkbox" [(ngModel)]="item.isSelected" name="list_name"
+                                   (change)="isAllSelected()"/>
+                            {{item.title}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-success" *ngIf="isConfirm"
+                            (click)="confirmTimetables()">Подтвердить</button>
+                    <button type="submit" class="btn btn-warning" *ngIf="!isConfirm"
+                            (click)="cancelTimetables()">Отменить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------------------------------Аудитория---------------------------------------------->
+    <div class="collapse" id="collapseClassroom">
+        <div class="card card-body">
+            <form [formGroup]="confirmForClassroomForm">
+                <div class="row">
+                    <div class="col-md-7 form-group">
+                        <label>Группа: </label>
+                        <ng-select formControlName="classroom"
+                                   [items]="classrooms"
+                                   bindLabel="number"
+                                   bindValue="id"
+                                   [multiple]="false"
+                                   placeholder="Выберите аудиторию"
+                                   clearAllText="Clear"
+                        >
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 form-group">
+                        <input type="date" class="form-control" formControlName="startDate" />
+                    </div>
+                    <div class="col-md-5 form-group">
+                        <input type="date" class="form-control" formControlName="endDate" />
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <button type="submit" class="btn btn-info" *ngIf="isConfirm"
+                                (click)="loadTimetableToConfirmForClassroom()">Найти</button>
+                        <button type="submit" class="btn btn-info" *ngIf="!isConfirm"
+                                (click)="loadTimetableToCancelForClassroom()">Найти</button>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1"
+                                   (change)="checkUncheckAll()"/> <strong>Выбрать все/ Снять выбор</strong>
+                        </li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let item of timetables">
+                            <input type="checkbox" [(ngModel)]="item.isSelected" name="list_name"
+                                   (change)="isAllSelected()"/>
+                            {{item.title}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-success" *ngIf="isConfirm"
+                            (click)="confirmTimetables()">Подтвердить</button>
+                    <button type="submit" class="btn btn-warning" *ngIf="!isConfirm"
+                            (click)="cancelTimetables()">Отменить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

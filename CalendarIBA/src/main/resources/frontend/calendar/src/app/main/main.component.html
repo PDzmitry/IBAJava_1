@@ -1,0 +1,94 @@
+<div class="container-fluid">
+    <div class="row">
+        <!--<div class="col-md-4">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <button class="btn btn-primary" (click)="loadClassroomEvents()">Аудитории</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary" (click)="loadTeacherEvents()">Преподаватели</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary" (click)="loadGroupEvents()">Группы</button>
+                </li>
+            </ul>
+        </div>-->
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button class="btn btn-outline-info" (click)="loadClassroomEvents()">Аудитории</button>
+            <button class="btn btn-outline-info" (click)="loadTeacherEvents()">Преподаватели</button>
+            <button class="btn btn-outline-info" (click)="loadGroupEvents()">Группы</button>
+        </div>
+        <div class="col-md-3 " *ngIf="isGroup">
+            <ng-select [(ngModel)]="group"
+                       [items]="groups"
+                       bindLabel="groupName"
+                       bindValue="id"
+                       [multiple]="false"
+                       placeholder="Отбор по группе"
+                       clearAllText="Clear"
+            >
+            </ng-select>
+        </div>
+
+        <div class="col-md-3" *ngIf="isTeacher">
+            <ng-select [(ngModel)]="teacher"
+                       [items]="teachers"
+                       bindLabel="lastName"
+                       bindValue="id"
+                       [multiple]="false"
+                       placeholder="Отбор по преподавателю"
+                       clearAllText="Clear"
+            >
+            </ng-select>
+        </div>
+
+        <div class="col-md-3" *ngIf="isClassroom">
+            <ng-select [(ngModel)]="classroom"
+                       [items]="classrooms"
+                       bindLabel="number"
+                       bindValue="id"
+                       [multiple]="false"
+                       placeholder="Отбор по аудитории"
+                       clearAllText="Clear"
+            >
+            </ng-select>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-outline-info" (click)="loadOneClassroomEvents()" *ngIf="isClassroom">ОК</button>
+            <button class="btn btn-outline-info" (click)="loadOneTeacherEvents()" *ngIf="isTeacher">ОК</button>
+            <button class="btn btn-outline-info" (click)="loadOneGroupEvents()" *ngIf="isGroup">ОК</button>
+        </div>
+    </div>
+
+    <full-calendar
+
+            #calendar
+            defaultView="timeGridWeek"
+            [plugins]="calendarPlugins"
+            locale="ru"
+            timeZone="local"
+            [editable]="false"
+            [selectable]="true"
+            [events]="calendarEvents"
+            [minTime]="'08:00'"
+            [maxTime]="'22:00'"
+            [allDaySlot]="false"
+            [slotEventOverlap]="false"
+            [slotLabelFormat]="slotLabelFormat"
+            [slotLabelInterval]="'00:30'"
+            [slotDuration]="'00:30'"
+            [firstDay]="1"
+            [weekends]="true"
+            [header]="header"
+            [buttonText]="buttonText"
+            [height]="810"
+            (dateClick)="handleDateClick($event)"
+            (eventMouseEnter)="eventRender($event)"
+            (eventMouseLeave)="handleEventMouseLeave($event)"
+            (datesRender)="getDaysPeriod($event)"
+    ></full-calendar>
+
+</div>
+<br>
+<br>
+

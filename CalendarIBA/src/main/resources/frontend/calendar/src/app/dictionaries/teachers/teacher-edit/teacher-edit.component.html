@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="col-md-6">
+    <form [formGroup]="teacherEditForm">
+        <h4>Введите новые данные о преподавателе: </h4>
+            <div class="form-row">
+                <div class="col-sm form-group">
+                    <label >Фамилия: </label>
+                    <input type="text" formControlName="lastName"
+                           class="form-control"  placeholder="Введите фамилию">
+
+                    <p *ngIf="!teacherEditForm.get('lastName').valid
+                        && teacherEditForm.get('lastName').touched" class="alert alert-danger">
+                        Поле обязательно для заполнения. Введите фамилию!</p>
+                </div>
+
+                <div class="col-sm form-group">
+                    <label>Имя: </label>
+                    <input type="text" formControlName="firstName"
+                           class="form-control" placeholder="Введите имя">
+                    <p *ngIf="!teacherEditForm.get('firstName').valid
+                        && teacherEditForm.get('firstName').touched" class="alert alert-danger">
+                        Поле обязательно для заполнения. Введите имя!</p>
+                </div>
+
+
+            </div>
+            <div class="form-row">
+                <div class="col-sm form-group">
+                    <label>Отчество: </label>
+                    <input type="text" formControlName="patronymic"
+                           class="form-control" placeholder="Введите отчество">
+                    <p *ngIf="!teacherEditForm.get('patronymic').valid
+                        && teacherEditForm.get('patronymic').touched" class="alert alert-danger">
+                        Поле обязательно для заполнения. Введите отчество!</p>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md form-group">
+                    <label>Выберите вид найма: </label>
+                    <ng-select formControlName="typeOfEmployment"
+                               [items]="typesE"
+                               bindLabel="value"
+                               bindValue="id"
+                               [multiple]="false"
+                               placeholder="Выберите вид найма"
+                               clearAllText="Clear"
+                    >
+                    </ng-select>
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label >Цвет для преподавателя: </label>
+                    <input class="form-control"
+                           [style.background]="color"
+                           [cpOKButton]="true"
+                           [cpSaveClickOutside]="false"
+                           [cpOKButtonClass]= "'btn btn-primary btn-xs'"
+                           [cpCancelButton]="true"
+                           [cpCancelButtonClass]= "'btn btn-primary btn-xs'"
+                           [cpCancelButtonText]="'Отмена'"
+                           [(colorPicker)]="color"
+                    />
+                </div>
+            </div>
+        <div class="form-group">
+            <button type="submit" [disabled]="!teacherEditForm.valid" (click)="onSubmit()" class="btn btn-primary">Сохранить</button>
+            <button type="button" class="btn btn-secondary"  (click)="gotoTeacherList()">Отмена</button>
+            </div>
+
+    </form>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+
+
